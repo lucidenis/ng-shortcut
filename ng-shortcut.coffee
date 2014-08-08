@@ -13,7 +13,9 @@ angular
                     modifiers = parts.slice(0, parts.length-1)
 
                     handler = (e) ->
-                        return if e.keyCode != keycode
+                        return if e.keyCode != keycode || 
+                            attrs.shortcutActiveOn && e.currentTarget.activeElement.id != attrs.shortcutActiveOn
+
                         e.stopImmediatePropagation()
 
                         for meta in ['shift', 'ctrl', 'alt', 'meta']
